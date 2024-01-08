@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.sanctio.tasklist.domain.user.User;
 import ru.sanctio.tasklist.service.AuthService;
 import ru.sanctio.tasklist.service.UserService;
@@ -13,6 +14,7 @@ import ru.sanctio.tasklist.web.security.JwtTokenProvider;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class AuthServiceImpl implements AuthService {
 
     private final AuthenticationManager authenticationManager;
