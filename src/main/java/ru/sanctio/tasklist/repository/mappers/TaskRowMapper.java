@@ -12,6 +12,8 @@ import java.util.List;
 
 public class TaskRowMapper {
 
+    //TODO подумать над единым классом мапинга
+
     @SneakyThrows
     public static Task mapRow(ResultSet resultSet) {
         if(resultSet.next()) {
