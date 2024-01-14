@@ -5,7 +5,6 @@ import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -42,7 +41,7 @@ public class JwtTokenProvider {
     }
 
     public String createAccessToken(Long userId, String username, Set<Role> roles) {
-        //TODO заменить deprecated методы
+        //TODO переписать на новую версию
         Claims claims = Jwts.claims().setSubject(username);
         claims.put("id", userId);
         claims.put("roles", resolveRoles(roles));
@@ -63,7 +62,7 @@ public class JwtTokenProvider {
     }
 
     public String createRefreshToken(Long userId, String username) {
-        //TODO заменить deprecated методы
+        //TODO переписать на новую версию
         Claims claims = Jwts.claims().setSubject(username);
         claims.put("id", userId);
         Date now = new Date();
@@ -78,7 +77,7 @@ public class JwtTokenProvider {
 
     public JwtResponse refreshUserToken(String refreshToken) {
         JwtResponse jwtResponse = new JwtResponse();
-        if(!validateToken(refreshToken)) {
+        if (!validateToken(refreshToken)) {
             throw new AccessDeniedException();
         }
         Long userId = Long.valueOf(getId(refreshToken));
@@ -91,7 +90,7 @@ public class JwtTokenProvider {
     }
 
     public boolean validateToken(String refreshToken) {
-        //TODO заменить deprecated методы
+        //TODO переписать на новую версию
         Jws<Claims> claims = Jwts
                 .parserBuilder()
                 .setSigningKey(key)
@@ -101,7 +100,7 @@ public class JwtTokenProvider {
     }
 
     private String getId(String refreshToken) {
-        //TODO заменить deprecated методы
+        //TODO переписать на новую версию
         return Jwts
                 .parserBuilder()
                 .setSigningKey(key)
@@ -115,11 +114,11 @@ public class JwtTokenProvider {
     public Authentication getAuthentication(String token) {
         String username = getUsername(token);
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-        return  new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
+        return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }
 
     private String getUsername(String token) {
-        //TODO заменить deprecated методы
+        //TODO переписать на новую версию
         return Jwts
                 .parserBuilder()
                 .setSigningKey(key)

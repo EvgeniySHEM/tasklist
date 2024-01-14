@@ -52,7 +52,7 @@ public class TaskRepositoryImpl implements TaskRepository {
             WHERE ID = ?""";
 
     private final String CREATE = """
-            INSERT INTO tasks (title, description, status, expiration_date)
+            INSERT INTO tasks (title, description, expiration_date, status)
             VALUES (?, ?, ?, ?)""";
 
     private final String DELETE = """

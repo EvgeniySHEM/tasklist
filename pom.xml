@@ -48,8 +48,6 @@
 			<artifactId>spring-boot-configuration-processor</artifactId>
 		</dependency>
 
-
-
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
@@ -99,8 +97,6 @@
 			<version>${jjwt.version}</version>
 			<scope>runtime</scope>
 		</dependency>
-
-
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
