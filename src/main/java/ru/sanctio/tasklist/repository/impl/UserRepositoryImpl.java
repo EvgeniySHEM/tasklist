@@ -30,7 +30,7 @@ public class UserRepositoryImpl implements UserRepository {
                    u.password as user_password,
                    ur.role as user_role_role,
                    t.id as task_id,
-                   t.title as task_tatle,
+                   t.title as task_title,
                    t.description as task_description,
                    t.expiration_date as task_expiration_date,
                    t.status as task_status
@@ -47,7 +47,7 @@ public class UserRepositoryImpl implements UserRepository {
                    u.password as user_password,
                    ur.role as user_role_role,
                    t.id as task_id,
-                   t.title as task_tatle,
+                   t.title as task_title,
                    t.description as task_description,
                    t.expiration_date as task_expiration_date,
                    t.status as task_status

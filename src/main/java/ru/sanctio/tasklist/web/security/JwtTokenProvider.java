@@ -43,7 +43,7 @@ public class JwtTokenProvider {
 
     public String createAccessToken(Long userId, String username, Set<Role> roles) {
         //TODO заменить deprecated методы
-        Claims claims = Jwts.claims().setSubject(username).build();
+        Claims claims = Jwts.claims().setSubject(username);
         claims.put("id", userId);
         claims.put("roles", resolveRoles(roles));
         Date now = new Date();
@@ -64,7 +64,7 @@ public class JwtTokenProvider {
 
     public String createRefreshToken(Long userId, String username) {
         //TODO заменить deprecated методы
-        Claims claims = Jwts.claims().setSubject(username).build();
+        Claims claims = Jwts.claims().setSubject(username);
         claims.put("id", userId);
         Date now = new Date();
         Date validity = new Date(now.getTime() + jwtProperties.getRefresh());
@@ -93,7 +93,7 @@ public class JwtTokenProvider {
     public boolean validateToken(String refreshToken) {
         //TODO заменить deprecated методы
         Jws<Claims> claims = Jwts
-                .parser()
+                .parserBuilder()
                 .setSigningKey(key)
                 .build()
                 .parseClaimsJws(refreshToken);
@@ -103,7 +103,7 @@ public class JwtTokenProvider {
     private String getId(String refreshToken) {
         //TODO заменить deprecated методы
         return Jwts
-                .parser()
+                .parserBuilder()
                 .setSigningKey(key)
                 .build()
                 .parseClaimsJws(refreshToken)
@@ -121,7 +121,7 @@ public class JwtTokenProvider {
     private String getUsername(String token) {
         //TODO заменить deprecated методы
         return Jwts
-                .parser()
+                .parserBuilder()
                 .setSigningKey(key)
                 .build()
                 .parseClaimsJws(token)

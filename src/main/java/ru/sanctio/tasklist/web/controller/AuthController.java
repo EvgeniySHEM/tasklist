@@ -28,7 +28,8 @@ public class AuthController {
     private final UserMapper userMapper;
 
     @PostMapping("/login")
-    public JwtResponse login(@Validated @RequestBody JwtRequest loginRequest) {
+    public JwtResponse login(@Validated @RequestBody final JwtRequest loginRequest) {
+        System.out.println("Зашел");
         return authService.login(loginRequest);
     }
 
