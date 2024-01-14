@@ -29,7 +29,6 @@ public class AuthController {
 
     @PostMapping("/login")
     public JwtResponse login(@Validated @RequestBody final JwtRequest loginRequest) {
-        System.out.println("Зашел");
         return authService.login(loginRequest);
     }
 
